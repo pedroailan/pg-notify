@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PgNotify-Consumer.APP", "PgNotify.APP\PgNotify-Consumer.APP.csproj", "{31722959-9D1C-429E-A911-55769585ECFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PgNotify-Commons", "Commons\PgNotify-Commons.csproj", "{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNotify-Producer.APP", "PgNotify-Producer\PgNotify-Producer.APP.csproj", "{3079FE68-52E8-4510-811C-345EEC723FED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNotify-Consumer.API", "PgNotify-Consumer.API\PgNotify-Consumer.API.csproj", "{1F95180B-95C0-405D-BCF0-708626715A41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNotify-Commons", "Commons\PgNotify-Commons.csproj", "{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNotify-Producer.API", "PgNotify-Producer.API\PgNotify-Producer.API.csproj", "{3265060F-DB28-468D-B807-4EAF26D53CE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31722959-9D1C-429E-A911-55769585ECFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31722959-9D1C-429E-A911-55769585ECFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31722959-9D1C-429E-A911-55769585ECFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31722959-9D1C-429E-A911-55769585ECFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3079FE68-52E8-4510-811C-345EEC723FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3079FE68-52E8-4510-811C-345EEC723FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3079FE68-52E8-4510-811C-345EEC723FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3079FE68-52E8-4510-811C-345EEC723FED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E869B2B-6F10-4B01-8AA1-E2A64A62D247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F95180B-95C0-405D-BCF0-708626715A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F95180B-95C0-405D-BCF0-708626715A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F95180B-95C0-405D-BCF0-708626715A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F95180B-95C0-405D-BCF0-708626715A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3265060F-DB28-468D-B807-4EAF26D53CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3265060F-DB28-468D-B807-4EAF26D53CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3265060F-DB28-468D-B807-4EAF26D53CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3265060F-DB28-468D-B807-4EAF26D53CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
