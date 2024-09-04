@@ -1,3 +1,3 @@
 ﻿using PgNotify.APP;
 
-await Connection.Listen();
+await Consumer.Listen();
