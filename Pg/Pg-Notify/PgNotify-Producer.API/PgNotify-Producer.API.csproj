@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="8.0.3" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Rabbit\rabbit-mq\Rabbit-MQ\Commons\RabbitMQ-Commons.csproj" />
     <ProjectReference Include="..\Commons\PgNotify-Commons.csproj" />
   </ItemGroup>
 

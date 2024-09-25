@@ -2,9 +2,9 @@
 using Npgsql;
 using System.Text.Json;
 
-namespace PgNotify_Producer.API;
+namespace PgNotify_Consumer.API;
 
-public class Producer(IConfiguration configuration)
+public class Response(IConfiguration configuration)
 {
     private readonly IConfiguration _configuration = configuration;
 
@@ -16,7 +16,7 @@ public class Producer(IConfiguration configuration)
             conn.Open();
 
             // Comando para enviar a notificação
-            using var cmd = new NpgsqlCommand($"NOTIFY {Notify.Channel1}, '{JsonSerializer.Serialize(notification)}'", conn);
+            using var cmd = new NpgsqlCommand($"NOTIFY {Notify.Channel2}, '{JsonSerializer.Serialize(notification)}'", conn);
 
             await cmd.ExecuteNonQueryAsync();
             return true;

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Commons;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PgNotify_Producer.API.Controllers
@@ -12,8 +12,8 @@ namespace PgNotify_Producer.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Notification([FromBody] Notification notification)
         {
-            await _producer.Notification(notification);
-            return Ok(notification);
+            bool notify = await _producer.Notification(notification);
+            return Ok(notify);
         }
     }
 }

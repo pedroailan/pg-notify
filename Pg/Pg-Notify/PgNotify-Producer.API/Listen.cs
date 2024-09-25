@@ -2,12 +2,11 @@
 using Npgsql;
 using System.Text.Json;
 
-namespace PgNotify_Consumer.API;
+namespace PgNotify_Producer.API;
 
-public class Consumer(IConfiguration configuration, Response response) : BackgroundService
+public class Listen(IConfiguration configuration) : BackgroundService
 {
     private readonly IConfiguration _configuration = configuration;
-    private readonly Response _response = response;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -19,12 +18,12 @@ public class Consumer(IConfiguration configuration, Response response) : Backgro
             // Inscreve-se no canal para receber notificações
             using (var listenCommand = conn.CreateCommand())
             {
-                listenCommand.CommandText = $"LISTEN {Notify.Channel1}";
+                listenCommand.CommandText = $"LISTEN {Notify.Channel2}";
                 listenCommand.ExecuteNonQuery();
             }
 
             // Configura o evento de notificação
-            conn.Notification += async (o, e) =>
+            conn.Notification += (o, e) =>
             {
                 Notification message = JsonSerializer.Deserialize<Notification>(e.Payload);
 
@@ -33,9 +32,7 @@ public class Consumer(IConfiguration configuration, Response response) : Backgro
 
                 long latency = message.CalculateTime(receivedTimestamp);
 
-                await _response.Notification(message);
-                Console.WriteLine("\n");
-                Console.WriteLine($"Tempo total entre produção e consumo: {latency} ms");
+                Console.WriteLine($"Tempo total entre produção, consumo e resposta: {latency} ms");
             };
 
             // Mantém a conexão aberta para receber notificações

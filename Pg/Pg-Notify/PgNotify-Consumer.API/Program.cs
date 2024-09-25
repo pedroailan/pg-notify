@@ -1,4 +1,5 @@
 using PgNotify_Consumer.API;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<Consumer>();
+builder.Services.AddSingleton<Response>();
 builder.Services.AddHostedService(provider => provider.GetRequiredService<Consumer>());
 
 var app = builder.Build();
@@ -24,6 +26,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Configurar o middleware para expor métricas no endpoint "/metrics"
+app.UseMetricServer();
+
+// Incluir métricas de requisição HTTP
+app.UseHttpMetrics();
 
 app.MapControllers();
 
