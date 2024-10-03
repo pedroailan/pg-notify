@@ -4,9 +4,10 @@ using System.Text.Json;
 
 namespace PgNotify_Producer.API;
 
-public class Listen(IConfiguration configuration) : BackgroundService
+public class Listen(IConfiguration configuration, ILogger<Listen> logger) : BackgroundService
 {
     private readonly IConfiguration _configuration = configuration;
+    private readonly ILogger<Listen> _logger = logger;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -18,7 +19,7 @@ public class Listen(IConfiguration configuration) : BackgroundService
             // Inscreve-se no canal para receber notificações
             using (var listenCommand = conn.CreateCommand())
             {
-                listenCommand.CommandText = $"LISTEN {Notify.Channel2}";
+                listenCommand.CommandText = $"LISTEN {Config.Channel2}";
                 listenCommand.ExecuteNonQuery();
             }
 
@@ -32,7 +33,7 @@ public class Listen(IConfiguration configuration) : BackgroundService
 
                 long latency = message.CalculateTime(receivedTimestamp);
 
-                Console.WriteLine($"Tempo total entre produção, consumo e resposta: {latency} ms");
+                _logger.LogInformation("{0};{1}", DateTime.Now.ToString("HH:mm:ss:fff"), latency);
             };
 
             // Mantém a conexão aberta para receber notificações

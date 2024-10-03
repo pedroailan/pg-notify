@@ -16,7 +16,7 @@ public class Response(IConfiguration configuration)
             conn.Open();
 
             // Comando para enviar a notificação
-            using var cmd = new NpgsqlCommand($"NOTIFY {Notify.Channel2}, '{JsonSerializer.Serialize(notification)}'", conn);
+            using var cmd = new NpgsqlCommand($"NOTIFY {Config.Channel2}, '{JsonSerializer.Serialize(notification)}'", conn);
 
             await cmd.ExecuteNonQueryAsync();
             return true;

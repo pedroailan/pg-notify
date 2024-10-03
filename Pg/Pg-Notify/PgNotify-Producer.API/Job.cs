@@ -8,11 +8,12 @@ namespace PgNotify_Producer.API
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
+
             while (!stoppingToken.IsCancellationRequested)
             {
-                Console.WriteLine("\n");
                 await _producer.Notification(new Notification());
-                await Task.Delay(Notify.Interval, stoppingToken);
+                await Task.Delay(Config.Interval, stoppingToken);
             }
         }
     }

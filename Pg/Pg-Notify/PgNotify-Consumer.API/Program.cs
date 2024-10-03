@@ -1,7 +1,10 @@
 using PgNotify_Consumer.API;
 using Prometheus;
+using Commons;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddLogs();
 
 // Add services to the container.
 
@@ -17,11 +20,10 @@ builder.Services.AddHostedService(provider => provider.GetRequiredService<Consum
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+//app.UseSwagger();
+//app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 
